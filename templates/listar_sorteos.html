@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class='form-style-3'>
+        {# <div class=listar-datos> #}
+            <fieldset class='tabla-listar-clientes'>
+                <legend>Listado de Sorteos</legend>
+
+                <table id='tabdatos' class='display responsive stripe cell-border' style='width:100%'>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha-Sorteo</th>
+                            <th>Loteria</th>
+                            <th>Loto<br>1er.<br>Premio</th>
+                            <th>Loto<br>2do.<br>Premio</th>
+                            <th>Loto<br>3er.<br>Premio</th>
+                            <th>Ref.<br>1er.<br>Premio</th>
+                            <th>Ref.<br>2do.<br>Premio</th>
+                            <th>Ref.<br>3er.<br>Premio</th>
+                            <th>1.er<br>Calc.</th>
+                            <th>2.do<br>Calc.</th>
+                            <th>3.er<br>Calc.</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for sorteo in sorteos %}
+                            <tr>
+                                <td><a href="{{ url_for('editar_sorteo', id=sorteo.id) }}">{{ sorteo.id }}</td>
+                                <td>{{ sorteo.fecha|formato_fechahora }}</td>
+                                <td>{{ sorteo.loteria.nombre }}</td>
+                                <td>{{ sorteo.premio_loto1|formato_premios }}</td>
+                                <td>{{ sorteo.premio_loto2|formato_premios }}</td>
+                                <td>{{ sorteo.premio_loto3|formato_premios }}</td>
+                                <td>{{ sorteo.premio_ref1|formato_premios }}</td>
+                                <td>{{ sorteo.premio_ref2|formato_premios }}</td>
+                                <td>{{ sorteo.premio_ref3|formato_premios }}</td>
+                                <td>{{ sorteo.premio_calc1|formato_premios }}</td>
+                                <td>{{ sorteo.premio_calc2|formato_premios }}</td>
+                                <td>{{ sorteo.premio_calc3|formato_premios }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </fieldset>
+        {# </div> #}
+
+        <div class='botones'>
+            <button class='boton' id='regresar' type='button' onclick='IrAtras()'>Regresar</button>
+        </div>
+    </div>  <!-- form-style-3 -->
+
+    <script src='{{ url_for("static", filename="js/DataTable.js") }}'></script>
+{% endblock %}

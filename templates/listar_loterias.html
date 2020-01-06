@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='item4 form-style-3'>
+        <div class=listar-datos>
+            <fieldset class='tabla-listar-clientes'>
+                <legend>Listado de Loterias</legend>
+
+                <table id='tabdatos' class='display responsive nowrap cell-border' style='width:100%'>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>FECHA-CREACION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for loteria in loterias %}
+                            <tr>
+                                <td><a href="{{ url_for('editar_loteria', id=loteria.id) }}" >{{ loteria.id }}</td>
+                                <td>{{ loteria.nombre }}</td>
+                                <td>{{ loteria.fecha_c|formato_fechahora }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+
+        <div class='botones'>
+            <button class='boton' id='regresar' type='button' onclick='IrAtras()'>regresar</button>
+        </div>
+    </div>  <!-- item4 form-style-3 -->
+
+    <script src='{{ url_for("static", filename="js/DataTable.js") }}'></script>
+{% endblock %}

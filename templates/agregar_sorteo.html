@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='form-style-3'>
+        <form method='POST'>
+            {% from 'macros.html' import render_field, render_fecha %}
+
+            {{ form.csrf_token }}
+
+            <h3>Agregar Sorteos</h3>
+
+            <div class='tarjeta'>
+                {{ render_fecha( form.fecha) }}
+                {{ render_field( form.loteria) }}
+            </div>
+
+            <div class='tarjeta'>
+                {{ render_field( form.premio_loto1) }}
+                {{ render_field( form.premio_loto2) }}
+                {{ render_field( form.premio_loto3) }}
+            </div>
+
+            <div class='tarjeta'>
+                {{ render_field( form.premio_ref1) }}
+                {{ render_field( form.premio_ref2) }}
+                {{ render_field( form.premio_ref3) }}
+            </div>
+
+            <div class='tarjeta'>
+                {{ render_field( form.premio_calc1) }}
+                {{ render_field( form.premio_calc2) }}
+                {{ render_field( form.premio_calc3) }}
+            </div>
+
+            <div class='botones' id='botones'>
+                {# Solo para los botones #}
+                {% for field in form if field.widget.input_type == 'submit' %}
+                    {{ field }}
+                {% endfor %}
+            </div>
+        </form>
+    </div>  {# Fin - class='form-style-3' #}
+
+    <script>
+       var calcular = function() {
+            var loto1 = document.getElementById('premio_loto1').value;
+            var loto2 = document.getElementById('premio_loto2').value;
+            var loto3 = document.getElementById('premio_loto3').value;
+
+            var ref1 = document.getElementById('premio_ref1').value;
+            var ref2 = document.getElementById('premio_ref2').value;
+            var ref3 = document.getElementById('premio_ref3').value;
+
+            document.getElementById('premio_calc1').value = Math.abs(loto1 - ref1);
+            document.getElementById('premio_calc2').value = Math.abs(loto2 - ref2);
+            document.getElementById('premio_calc3').value = Math.abs(loto3 - ref3);
+        }
+    </script>
+
+    <script>
+        /* Para formatos de la fecha ver https://momentjs.com/docs/#/displaying/format/ */
+        $(document).ready(function() {
+        $('.datepick').datetimepicker({
+            format:'DD-MM-YYYY HH:mm:ss',
+            ignoreReadonly: true
+        });
+        });
+
+    </script>
+{% endblock %}

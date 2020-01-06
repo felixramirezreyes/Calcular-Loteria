@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "C:\\Dev\\Py37Flask\\Scripts\\python.exe",
+    "python.venvPath": "C:\\Dev\\Py37Flask\\Scripts\\",
+    "python.venvFolders": [
+        "C:\\Dev\\Py37Flask\\Scripts"
+    ],
+    "python.formatting.provider": "yapf"
+}

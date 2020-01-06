@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='form-style-3'>
+        <h3>Estadisticas</h3>
+
+        <div class='estadisticas'>
+            <div class='tarjeta-estadistica'>
+                <span>Los {{ menos_salen|length }} que mas salen</span>
+
+                <table class='estadisticas'>
+                    <tbody>
+                        <tr>
+                            <th>Nunero</th>
+                            <th>Veces</th>
+                        </tr>
+
+                        {% for numero, veces in mas_salen %}
+                            <tr>
+                                <td><a href="{{ url_for('estadisticas3', numero=numero) }}">{{ numero|formato_premios }}</td>
+                                <td>{{ veces }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class='tarjeta-estadistica'>
+                <span>Los {{ menos_salen|length }} que menos salen</span>
+
+                <table class='estadisticas'>
+                    <tr>
+                        <th>Nunero</th>
+                        <th>Veces</th>
+                    </tr>
+
+                    {% for numero, veces in menos_salen %}
+                        <tr>
+                            <td><a href="{{ url_for('estadisticas3', numero=numero) }}">{{ numero|formato_premios }}</td>
+                            <td>{{ veces }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class='tarjeta-estadistica'>
+                <span>Los que nunca han salido</span>
+
+                <table class='estadisticas'>
+                    <tr>
+                        <th>Nunero</th>
+                        <th>Veces</th>
+                    </tr>
+
+                    {% for numero, veces in no_salen %}
+                        <tr>
+                            <td>{{ numero|formato_premios }}</td>
+                            <td>{{ veces }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>  <!-- .estadisticas -->
+
+        <div class='botones'>
+            <button class='boton' id='regresar' type='button' onclick='IrAtras()'>Regresar</button>
+        </div>
+    </div>  <!-- .form-style-3 -->
+{% endblock body %}
+

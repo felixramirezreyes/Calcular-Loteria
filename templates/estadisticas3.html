@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='form-style-3'>
+        <h3>Estadisticas</h3>
+
+        <div class='estadisticas2'>
+            <div class='tarjeta-estadistica'>
+                <span>Este numero ha salido {{ sorteos|length }} veces</span>
+
+                <table class='estadisticas2'>
+                    <tbody>
+                        <tr>
+                            <th>Loteria</th>
+                            <th>Fecha-Sorteo</th>
+                            <th>1er. Premio</th>
+                            <th>2do. Premio</th>
+                            <th>3er. Premio</th>
+                        </tr>
+
+                        {% for sorteo in sorteos %}
+                            <tr>
+                                <td>{{ sorteo.loteria.nombre }}</td>
+                                <td>{{ sorteo.fecha|formato_fechahora }}</td>
+                                <td>{{ sorteo.premio_loto1|formato_premios }}</td>
+                                <td>{{ sorteo.premio_loto2|formato_premios }}</td>
+                                <td>{{ sorteo.premio_loto3|formato_premios }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>  <!-- .estadisticas -->
+
+        <div class='botones'>
+            <button class='boton' id='regresar' type='button' onclick='IrAtras()'>Regresar</button>
+        </div>
+    </div>  <!-- .form-style-3 -->
+{% endblock body %}
+

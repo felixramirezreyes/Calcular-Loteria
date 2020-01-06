@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='form-style-3'>
+        {# <h4>Estadisticas</h4> #}
+
+        <form method='POST'>
+            {% from 'macros.html' import render_field %}
+
+            {{ form.scrf_token }}
+
+            <h3>Estadísticas Por Días</h3>
+
+            <div class='tarjeta'>
+                {{ render_field( form.dia_mes ) }}
+                {{ form.buscar(class_='buscar-historial') }}
+            </div>
+
+            {% if mostrar_resultado %}
+                <fieldset class='tabla-historial-numeros'>
+                    <h4>Historial de sorteos para el número {{ numero }}</h4>
+
+                    <table id='tabdatos' class='display responsive nowrap cell-border' style='width:100%'>
+                        <thead>
+                            <tr>
+                                {# <th>Loteria</th> #}
+                                <th>Día</th>
+                                <th>Fecha Sorteo</th>
+                                <th>1er.<br>Premio</th>
+                                <th>2do.<br>Premio</th>
+                                <th>3er.<br>Premio</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for sorteo in numeros %}
+                                <tr>
+                                    {# <td>{{ sorteo.loteria.nombre }}</td> #}
+                                    <td>{{ sorteo.dia }}</td>
+                                    <td>{{ sorteo.fecha|formato_fechahora }}</td>
+                                    <td>{{ sorteo.premio_loto1|formato_premios }}</td>
+                                    <td>{{ sorteo.premio_loto2|formato_premios }}</td>
+                                    <td>{{ sorteo.premio_loto3|formato_premios }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </fieldset>
+        {% endif%}
+        </form>
+
+        <div class='botones'>
+            <button class='boton' id='regresar' type='button' onclick='IrAtras()'>Regresar</button>
+        </div>
+    </div>  <!-- .form-style-3 -->
+
+    <script src='{{ url_for("static", filename="js/DataTable.js") }}'></script>
+{% endblock body %}
+

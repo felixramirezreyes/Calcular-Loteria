@@ -1,0 +1,53 @@
+{% macro render_field(field) %}
+    {# Mostrar el texto y la entrada de datos del campo #}
+    <label for='{{ field.name.lower() }}'>
+        {% if field.name in ['premio_ref1', 'premio_ref2', 'premio_ref3'] %}
+            <span>{{ field.label.text }}</span>
+            {{ field(**{'class': 'input-field', 'onchange':'calcular()'}) }}
+        {% elif field.widget.input_type == 'checkbox' %}
+            <br>
+            <p>
+                <span>{{ field.label.text }}</span>
+                &nbsp
+                {{ field(**{ 'class': 'input-field' }) }}
+            </p>
+        {% elif field.name in ['fecha'] %}
+            pass
+        {% else %}
+            <span>{{ field.label.text }}</span>
+            {{ field(class = field.render_kw['class'] if field.render_kw and 'class' in field.render_kw else 'input-field') }}
+        {% endif %}
+    </label>
+
+    {# Mostrar los errores del campo si hay #}
+    {% if field.errores %}
+        <ul class='errors'>
+            {% for error in field.errors %}
+                <li>
+                    <div class='field_error'>
+                        {{ error }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_fecha(field) %}
+    <label for='{{ field.name.lower() }}'>
+        <span>{{ field.label.text }}</span>
+
+        <div class="form-group required">
+            <div class="input-group datepick">
+                {{ field( class_='input-field form-control',
+                          id='frmSaveOffice_startdt',
+                          required='readonly') }}
+
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+        </div>
+    </label>
+{% endmacro %}

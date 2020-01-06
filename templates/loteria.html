@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class='form-style-3'>
+        <form method='POST'>
+            {% from 'macros.html' import render_field %}
+
+            {{ form.csrf_token }}
+
+            <h3>Matenimiento a Loterias</h3>
+
+            <div class='panel'>
+                {% for field in form if field.widget.input_type != 'hidden' and field.widget.input_type != 'submit' %}
+                    {{ render_field( field ) }}
+                    <br>
+                {% endfor %}
+            </div>
+
+            <div class='botones' id='botones'>
+                {# Solo para los botones #}
+                {% for field in form if field.widget.input_type == 'submit' %}
+                    {{ field }}
+                {% endfor %}
+            </div>
+        </form>
+    </div>  {# Fin - class='form-style-3' #}
+{% endblock %}

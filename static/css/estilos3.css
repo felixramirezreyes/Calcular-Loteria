@@ -1,0 +1,774 @@
+/* Estilos para el Sistema de Super Clientes */
+:root {
+  --primario: #f4ffef;
+  --secundario: #0097A7;
+  --panel-datos: #f4ffef;
+  --oscuro: #212121;
+  --gris: #f1f1f1;
+  --barra-menu: #0f9203;
+
+  --anchoPantalla: 1200px;
+}
+
+
+html {
+  box-sizing: border-box;
+  min-height: 100%;
+  font-size: .8rem;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: verdana, geneva, serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  min-height: 100%;
+  line-height: 1.5;
+  font-weight: normal;
+
+  /* Nuevo 21102019 */
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+h1, h2 {
+  margin: 0;
+  text-align: center;
+}
+
+h2 {
+  color: var(--secundario);
+  font-size: 2rem;
+}
+
+h3 {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  font-size: 1.4rem;
+}
+
+header.page-header, footer.fixed-footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+  padding: .3rem;
+
+  /* Nuevo 21102019 */
+  width: 100%;
+  position: fixed;
+
+}
+
+
+.page-header img {
+  max-width: 8rem;
+  max-height: 8rem;
+  margin: -0.3rem .4rem .6rem 0;
+  border-radius: 50%;
+}
+
+/* Nuevo 21102019 */
+header.page-header {
+  top: 0;
+  margin: 5px;
+}
+
+/* Nuevo 21102019 */
+footer.fixed-footer {
+  bottom: 0;
+  padding-bottom: 2px;
+}
+
+
+/* **************************************************** */
+
+/* NUEVO MENU DEL SISTEMA */
+div.navegbar {
+  position: unset;  /* Obligatorio porque bootstrap le agrega relative */
+  overflow: hidden;
+  max-width: var(--anchoPantalla);
+  color: #000000;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .5rem;
+}
+
+div.navegbar {
+  display: none;
+}
+
+@media (min-width:768px) {
+  div.navegbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgba(0,184,228, .7);
+    padding: 1.5em;
+    min-width: 100%;
+    flex-wrap: unset;
+  }
+}
+
+div.navegbar a {
+  width: 9rem;
+  color: var(--color-oscuro);
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: rgba(0,184,228, 1);
+  border-radius: .3rem;
+  padding: .4rem;
+  margin: .4rem;
+  text-align: center;
+}
+
+div.navegbar a:hover {
+  background-color: rgba(41, 243, 22, 0.7);
+  box-shadow: 4px 8px 3px grey;
+}
+
+div.subnaveg {
+  overflow: hidden;
+  display: flex;
+  background-color: rgba(0,184,228, 1);
+  border-radius: .3rem;
+  width: 9rem;
+  margin-left: 4rem;
+  margin-top: 1.2rem;
+  padding: .24rem;
+}
+
+div.subnaveg:hover {
+  background-color: unset;
+}
+
+@media (min-width: 768px) {
+div.subnaveg {
+  overflow: hidden;
+  display: flex;
+  background-color: rgba(0, 184, 228, .7);
+  border: 1px solid rgba(0, 184, 228, .7);
+  border-radius: .3rem;
+  padding: .26rem;
+  margin: .4rem;
+  width: 9rem;
+  }
+}
+
+button.subnavbtn {
+  outline: none;
+  font-size: 1rem;
+  color: #000000;
+  background-color: rgba(0, 184, 228, .7);
+  border: 1px solid rgba(0, 184, 228, .7);
+  margin: 0 auto;
+}
+
+button.subnavbtn:hover {
+  box-shadow: none;
+  border-style: none;
+}
+
+div.subnaveg:hover div.subnaveg-content {  /* Así es que funciona No Tocar */
+  display: flex;
+  flex-direction: column;
+  text-align-last: justify;
+  margin-left: -12px;
+}
+
+div.subnaveg-content {
+  display: none;
+  position: absolute;
+  /* background-color: var(--gris); */
+  margin-top: 2rem;
+  padding-bottom: .5rem;
+  border-radius: .5rem;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  div.subnaveg-content {
+    display: none;
+    position: absolute;
+    background-color: var(--gris);
+    margin-top: 2rem;
+    padding-bottom: .5rem;
+    border-radius: .5rem;
+    z-index: 1;
+  }
+}
+
+div.subnaveg-content a {
+  float: left;
+  color: #000000;
+  text-decoration: none;
+  margin-top: .2rem;
+  margin-bottom: .7rem;
+}
+
+@media (min-width: 768px) {
+  div.subnaveg-content a {
+    margin-bottom: .5rem;
+    margin-left: .4rem;
+    margin-right: .4rem;
+    font-size: 1rem;
+  }
+}
+
+#menu_hamburguesa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+	width: 1.9rem;
+  height: 1.5rem;
+  border-radius: .5rem;
+}
+
+#menu_hamburguesa span {
+	width: 100%;
+  height: .3rem;
+	border-radius: .5rem;
+	background-color: rgba(0,184,228, .8);
+}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgba(17, 17, 17, .9); /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  width: 9rem;
+  color: var(--color-oscuro);
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: rgba(0,184,228, 1);
+  border-radius: .3rem;
+  padding: .4rem;
+  margin: 1.5rem 1.5rem .4rem 4rem;
+  text-align: center;
+
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  background-color: rgba(41, 243, 22, 0.7);
+  box-shadow: 4px 8px 3px #000000;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  width: 3rem;
+  top: .5rem;
+  right: .5rem;
+  margin-left: .5rem;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: red;
+}
+
+.sidenav .closebtn:hover {
+  background-color: red;
+  box-shadow: 4px 8px 3px #000000;
+}
+
+/* Style page content - use this if you want to push the page content
+   to the right when you open the side navigation */
+/*                 REPETIDO REMOVER
+#contenedor {
+  transition: margin-left .5s;
+  padding: 2rem;
+}
+ */
+
+@media (min-width: 768px) {
+  span.texto-menu, #menu_hamburguesa {
+    display: none;
+  }
+}
+
+/* FIN - NUEVO MENU DEL SISTEMA */
+
+/* ****************************************************** */
+
+header .titulo {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .titulo i {
+  color: var(--primario);
+}
+
+#contenedor.contenedor {
+  max-width: var(--anchoPantalla);
+  /* margin: .2rem auto; */
+  background-color: white;
+  border-radius: 1rem;
+  -webkit-box-shadow: 1px 8px 25px -9px rgba(0,0,0,0.73);
+  -moz-box-shadow: 1px 8px 25px -9px rgba(0,0,0,0.73);
+  box-shadow: 1px 8px 25px -9px rgba(0,0,0,0.73);
+
+  transition: margin-left .5s;
+
+  /* Nuevo 21102019 */
+  padding: 8rem 2rem 2rem 2rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .contenedor-servicios {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.form-style-3 {
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+.form-style-3 fieldset {
+    border-radius: 10px;
+    margin: 1px 2px 2px 5px;
+    border: 1px solid #d2ffd1;
+    background: #f4ffef;
+    box-shadow: inset 0px 0px 15px #ffffff;
+}
+
+
+form {
+  /* background-color: var(--gris); */
+  border-radius: 1rem;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  form {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+fieldset.tabla-historial-numeros {
+  margin-top: 3rem;
+}
+
+fieldset.tabla-historial-numeros h4 {
+  text-align: center;
+}
+
+div.panel {
+  margin: .5rem 1rem 1.5rem 1rem;
+  background: var( --panel-datos);
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: .8rem 1rem 1rem -1rem rgba(0,0,0,0.7);
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  margin: .5rem 1rem 1.5rem 1rem;
+  background-color: var(--panel-datos);
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: .8rem 1.5rem 1rem -1rem rgba(0,0,0,0.7);
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-top: .5rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    width: auto;
+}
+
+input, select {
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .tarjeta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+ .tarjeta select {
+    width: 11rem;
+  }
+}
+
+
+/* ESTADISTICAS */
+.estadisticas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: .5rem 1rem 1.5rem 1rem;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+@media(min-width: 768px) {
+  .estadisticas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: .5rem 1rem 1.5rem 1rem;
+    padding: 1rem;
+    border-radius: .5rem;
+  }
+}
+
+.tarjeta-estadistica {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;  /*  Agrega scroll bar si es necesario */
+  margin: .5rem 1rem 1.5rem 1rem;
+  background-color: rgba(252, 248, 6, 0.705);
+  padding: 1rem;
+  border-radius: .5rem;
+  box-shadow: 7px 8px 2px grey
+}
+
+.tarjeta-estadistica span {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: .5rem;
+}
+
+div.tarjeta-estadistica table tbody {
+  margin: 0 auto;
+}
+
+
+div.tarjeta-estadistica table,
+div.tarjeta-estadistica table th,
+div.tarjeta-estadistica table td {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+div.tarjeta-estadistica table {
+  width: 100%;
+  max-height: 250px;
+  margin: 0 auto;
+  overflow: auto;
+  border-collapse: collapse;
+}
+
+div.tarjeta-estadistica table th,
+div.tarjeta-estadistica table td {
+  text-align: center;
+  padding: .3rem;
+}
+
+div.tarjeta-estadistica table tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+
+div.tarjeta-estadistica table tr:nth-child(odd) {
+  background-color: #c2eaf0
+}
+
+div.tarjeta-estadistica table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+div.tarjeta-estadistica2 table {
+  display: table;
+  width: 100%;
+  max-height: 250px;
+  margin: 0 auto;
+  overflow: auto;
+  border-collapse: collapse;
+}
+/* FIN - ESTADISTICAS */
+
+input#buscar.buscar-historial {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border-radius: .3rem;
+  font-weight: bold;
+  width: unset;
+}
+
+div.botones {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: .5rem 1rem .5rem 1rem;
+  background-color: var(--primario);
+  border-radius: .5rem;
+  border: 1px solid rgba(41, 243, 22, 0.7);
+  box-shadow: inset 0px 0px 15px #ffffff;
+}
+
+input[type=submit] {
+  width: 100px;
+  padding: .5rem 1.2rem .5rem 1.2rem;
+  cursor: pointer;
+  margin: .8rem;
+}
+
+input[type=submit]#guardar {
+  background-color: hsl(212, 90%, 59%);
+  color: #ffffff;
+  border-radius: .3rem;
+}
+
+input[type=submit]#borrar {
+  background-color: hsl(0, 87%, 63%);
+  color: #ffffff;
+  border-radius: .3rem;
+}
+
+input[type=submit]#cancelar {
+  background-color: hsl(44, 91%, 50%);
+  color: #ffffff;
+  border-radius: .3rem;
+}
+
+button#regresar {
+  background-color: hsl(44, 91%, 50%);
+  color: #000000;
+  font-weight: bold;
+  width: 100px;
+  margin: .8rem;
+  padding: .5rem 1.2rem .5rem 1.2rem;
+  border-radius: .3rem;
+  cursor: pointer;
+}
+
+input[type=submit]:hover, button:hover {
+  box-shadow: 4px 5px 3px grey;
+}
+
+
+
+/* MENSAJES FLASHES */
+ul.flashes {
+    margin: 0;
+    padding: 0;
+}
+
+.flashes li {
+    list-style: none;
+}
+
+.flashes li .error {
+    background-color: rgb(255, 0, 0, 0.3);
+    color: rgba(255, 0, 0, 1);
+    font-weight: bold;
+    border: 1px solid rgba(255, 0, 0, 0.4);
+    border-radius: 5px;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+}
+
+.flashes li .info {
+    background: rgba(71, 125, 243, 0.4);
+    color: rgb(35, 32, 235);
+    font-weight: bold;
+    border: 1px solid rgba(71, 125, 243, 0.7);
+    border-radius: 5px;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    padding: 1px;
+}
+
+.flashes li .exitoso {
+    background: rgba(125, 248, 94, 0.4);
+    color: rgb(18, 129, 3);
+    font-weight: bold;
+    border: 1px solid rgba(127, 248, 97, 0.7);
+    border-radius: 5px;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    padding: 1px;
+}
+/* FIN - MENSAJES FLASHES */
+
+
+/* TABLA DE DATOS JAVASCRIPT */
+/*
+table.dataTable.display tbody td a {
+    color: #000000;
+    text-decoration: none;
+}
+ */
+
+table.dataTable.display tbody tr.odd {
+    background-color: #e5f9e5;
+}
+
+table.dataTable.display tbody tr.even {
+    background-color: #f0f7f0;
+}
+
+table.dataTable.display tbody tr:hover {
+    background-color: #c4f4ff;
+}
+
+dib.dataTables_scrollHeadInner {
+  margin-right: 4px;
+}
+
+thead tr:hover {
+    background-color: #06f902;
+}
+
+/* Nuevo 21102019 */
+div.dataTables_wrapper {
+  position: static;  /* Evita que tenga posicion relativa */
+}
+
+div#tabdatos_wrapper.dataTables_wrapper.no-footer,
+div.dataTables_scrollHead, td.sorting_1 {
+  position: unset !important;  /* Evita que tenga posicion relativa */
+}
+
+/* Nuevo 21102019 */
+.dataTables_scroll {
+  position: unset;  /* Evita que tenga posicion relativa */
+}
+
+thead tr {
+  position: unset !important;  /* Evita que tenga posicion relativa */
+}
+
+.dataTables_scrollHeadInner {
+  position: unset;  /* Evita que tenga posicion relativa */
+}
+
+div.dataTables_scrollBody {
+  position: unset !important;  /* Evita que tenga posicion relativa */
+}
+
+/* --------------------------------------- */
+
+/*
+header.page-header {
+  position: fixed;
+}
+ */
+
+/* Div del Input-text de busqueda */
+.dataTables_wrapper .dataTables_filter {
+    float: left;
+    text-align: left;
+    width: 22rem;
+}
+
+/* Input-text de busqueda */
+.dataTables_wrapper .dataTables_filter input {
+    width: 95%;
+    margin-left: 2px;
+}
+
+/* Quitar margenes de la izquierda de la caja de busqueda heredados */
+div#tabdatos_filter label {
+  margin-left: 0;
+}
+
+/* Paginación. ej.: <Anterior>, 1, 2.. <Proximo> */
+.dataTables_wrapper .dataTables_paginate {
+    float: left;
+    text-align: left;
+    padding-top: 0.25em;
+}
+
+.dataTables_wrapper .dt-buttons {
+    float: right;
+    text-align: right;
+    margin-top: 10px;
+  }
+
+/* Div del Select de bloques de registros a mostrar */
+.dataTables_wrapper .dataTables_length {
+    float: right;
+}
+
+/* Botones extras */
+button.dt-button {
+    width: 6.5em;
+    height: 3em;
+    line-height: 2em;
+    background: rgba(125, 248, 94, 0.6);
+    font-weight: bold;
+    border: 1px solid rgb(37, 172, 3);
+    border-radius: 5px;
+  }
+
+  button.dt-button.buttons-copy.buttons-html5:hover,
+  button.dt-button.buttons-excel.buttons-html5:hover,
+  button.dt-button.buttons-pdf.buttons-html5:hover,
+  button.dt-button.buttons-print:hover {
+      background: none;
+      color: #000000;
+      background-color: #06f902;
+      font-weight: bold;
+      box-shadow: -0px -1px 10px gray;
+    }
+/* FIN - TABLA DE DATOS JAVASCRIPT */
+
+
+p.copyright {
+  /* margin: 1.5rem auto; */
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  margin-bottom: .5rem;
+  background-color: var(--gris);
+}
+
+
+/* IMAGEN DE ESPERA MIENTRAS LA PAGINA WEB CARGA */
+div#loader {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-size: 10%;
+    opacity: .8;
+}
+/* FIN - IMAGEN DE ESPERA MIENTRAS LA PAGINA WEB CARGA */
+
