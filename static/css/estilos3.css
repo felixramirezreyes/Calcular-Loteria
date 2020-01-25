@@ -30,8 +30,8 @@ body {
   font-weight: normal;
 
   /* Nuevo 21102019 */
-  padding-top: 60px;
-  padding-bottom: 40px;
+  /* padding-top: 60px;
+  padding-bottom: 40px; */
 }
 
 h1, h2 {
@@ -55,11 +55,13 @@ header.page-header, footer.fixed-footer {
   display: flex;
   flex-direction: column;
   background-color: #f1f1f1;
+  margin: .5rem;
   padding: .3rem;
+  border-radius: .5rem;
 
   /* Nuevo 21102019 */
-  width: 100%;
-  position: fixed;
+  /* width: 100%;
+  position: fixed; */
 
 }
 
@@ -72,16 +74,16 @@ header.page-header, footer.fixed-footer {
 }
 
 /* Nuevo 21102019 */
-header.page-header {
+/* header.page-header {
   top: 0;
   margin: 5px;
-}
+} */
 
 /* Nuevo 21102019 */
-footer.fixed-footer {
+/* footer.fixed-footer {
   bottom: 0;
   padding-bottom: 2px;
-}
+} */
 
 
 /* **************************************************** */
@@ -319,8 +321,8 @@ header .titulo i {
 }
 
 #contenedor.contenedor {
-  max-width: var(--anchoPantalla);
-  /* margin: .2rem auto; */
+  /* max-width: var(--anchoPantalla); */
+  margin: 0 .5rem;
   background-color: white;
   border-radius: 1rem;
   -webkit-box-shadow: 1px 8px 25px -9px rgba(0,0,0,0.73);
@@ -330,8 +332,8 @@ header .titulo i {
   transition: margin-left .5s;
 
   /* Nuevo 21102019 */
-  padding: 8rem 2rem 2rem 2rem;
-  margin: 0 auto;
+  /* padding: 8rem 2rem 2rem 2rem;
+  margin: 0 auto; */
 }
 
 @media (min-width: 768px) {
@@ -648,9 +650,9 @@ thead tr:hover {
 }
 
 /* Nuevo 21102019 */
-div.dataTables_wrapper {
-  position: static;  /* Evita que tenga posicion relativa */
-}
+/* div.dataTables_wrapper {
+  position: static;  Evita que tenga posicion relativa
+} */
 
 div#tabdatos_wrapper.dataTables_wrapper.no-footer,
 div.dataTables_scrollHead, td.sorting_1 {
@@ -658,9 +660,9 @@ div.dataTables_scrollHead, td.sorting_1 {
 }
 
 /* Nuevo 21102019 */
-.dataTables_scroll {
-  position: unset;  /* Evita que tenga posicion relativa */
-}
+/* .dataTables_scroll {
+  position: unset;  Evita que tenga posicion relativa
+} */
 
 thead tr {
   position: unset !important;  /* Evita que tenga posicion relativa */

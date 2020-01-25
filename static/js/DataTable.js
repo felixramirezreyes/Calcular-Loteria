@@ -15,17 +15,17 @@ $(document).ready(function () {
         //         ],
 
         // Hacer que colapsen todas las filas constridas
-        responsive: {
-            details: {
-                display: $.fn.dataTable.Responsive.display.childRowImmediate,
-                type: ''
-            }
-        },
+        // responsive: {
+        //     details: {
+        //         display: $.fn.dataTable.Responsive.display.childRowImmediate,
+        //         type: ''
+        //     }
+        // },
 
-        fixedHeader: {
-            header: true,
-            footer: true
-        },
+        // fixedHeader: {
+        //     header: true,
+        //     footer: true
+        // },
 
         scrollX: true,
         // responsive: true,
